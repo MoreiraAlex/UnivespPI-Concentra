@@ -1,4 +1,10 @@
 from django.shortcuts import render
+from .models import Consulta
 
 def consulta(request):
-    return render(request, 'concentra/consulta.html')
+    consultas = Consulta.objects.all()
+    return render(request, 'base.html', {'consultas': consultas})
+
+
+def historico(request):
+    return render(request, 'concentra/historico.html')
