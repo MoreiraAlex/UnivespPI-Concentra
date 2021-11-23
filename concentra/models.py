@@ -24,6 +24,7 @@ class Consulta(models.Model):
         ('100ºC', '100ºC'),
         ('110ºC', '110ºC'),
     )
+    concentra = models.FloatField(default=0)
     temperatura = models.CharField(max_length=5, choices=temp)
     densidade = models.FloatField()
     fator = models.FloatField(default=0)
