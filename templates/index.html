@@ -2,7 +2,21 @@
 {% load crispy_forms_tags %}
 
 {% block nav %}
-    <button type="button" class="btn btn-secondary btn-block" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-plus"></i> Nova Consulta</button>
+<div class="col-5 offset-1">
+    <button type="button" class="btn btn-secondary btn-block" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-plus"></i> Consulta</button>
+</div>
+<li class="nav-item col-1">
+    <a href="#" class="nav-link">Consultas</a>
+</li>
+{% if user.is_authenticated %}
+<li class="nav-item col-1 offset-4">
+    <a class="nav-link" aria-current="page" href="accounts/logout">Sair</a>
+</li>
+{% else %}
+<li class="nav-item col-1 offset-4">
+    <a class="nav-link" aria-current="page" href="accounts/login">Entrar</a>
+</li>
+{% endif %}
     <form method="POST">
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
