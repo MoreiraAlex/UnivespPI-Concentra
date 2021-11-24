@@ -3,6 +3,36 @@
 
 {% block title %} {{ block.super }} | Login {% endblock %}
 
+{% block nav %}
+<li class="nav-item col-1">
+    <a href="/" class="nav-link">Consultas</a>
+</li>
+<li class="nav-item col-1 offset-4">
+    <a class="nav-link" aria-current="page" href="#">Registrar</a>
+</li>
+
+    <form method="POST">
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Nova consulta</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        {% csrf_token %}
+                        {{ form|crispy }}
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary" value="Nova Consulta">Consultar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+{% endblock %}
+
 {% block content %}
 <div class="row">
     <div class="col-md-4 offset-md-4">

@@ -27,6 +27,33 @@ ul.messages li{
     background-color: #6c757d;
 }
 
+/* Consultas */
+.task-list {
+    padding-left: 0;
+}
+
+.task-item {
+    list-style: none;
+    font-size: 20px;
+    height: 50px;
+
+}
+
+.task-item a {
+    width: 90%;
+    color: #6c757d;
+}
+
+.task-item a:hover {
+    color:black;
+}
+
+.bi-pencil-fill {
+    float: right;
+}
+
+
+
 /* Paginação */
 
 .pagination {
@@ -77,6 +104,11 @@ footer p {
 footer a {
     text-decoration: none;
     color: rgb(185, 185, 185);
+    
+}
+
+footer a:hover {
+    color: white;
     
 }
 
