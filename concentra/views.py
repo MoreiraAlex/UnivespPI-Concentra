@@ -15,15 +15,16 @@ def consulta(request):
             consulta.densidade = consulta.densidade + consulta.fator
             consulta.concentra = 1
             consulta.save()
+            messages.info(request, 'Aferição de numero ' + str(consulta.id) + ' registrada.')
             return redirect('/')
         else:
-            print('Consulta nao foi registrada')
+            messages.info(request, 'Aferição nao foi registrada!')
             return redirect('/')
             
     else:
         consulta_list = Consulta.objects.all().order_by('-created')
 
-        paginator = Paginator(consulta_list, 3)
+        paginator = Paginator(consulta_list, 4)
         page = request.GET.get('page')
         consultas = paginator.get_page(page)
 
@@ -43,9 +44,10 @@ def editConsulta(request, id):
             consultaEdit.densidade = consultaEdit.densidade + consultaEdit.fator
             consultaEdit.concentra = 1
             consultaEdit.save()
+            messages.info(request, 'Aferição de numero ' + str(consulta.id) + ' editada com sucesso.')
             return redirect('/')
         else:
-            print('Consulta nao foi editada')
+            messages.info(request, 'Aferição nao foi editada!')
             return redirect('/')
 
     else:
@@ -57,6 +59,6 @@ def deleteConsulta(request, id):
     consulta = get_object_or_404(Consulta, pk=id)
     consulta.delete()
 
-    messages.info(request, 'Tarefa deletada com sucesso.')
+    messages.info(request, 'Aferição deletada com sucesso.')
 
     return redirect('/')
