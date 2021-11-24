@@ -14,7 +14,6 @@
         <a class="nav-link" aria-current="page" href="accounts/login">Entrar</a>
     </li>
 {% endif %}
-    <!--
     <form method="POST">
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -35,7 +34,6 @@
             </div>
         </div>
     </form>
--->
 {% endblock %}
 
 {% block content %}
@@ -46,39 +44,30 @@
             {% endfor %}
         </ul>
     {% endif %}
-    <ul class="taks-list">
-        {% for consulta in consultas %}
-            <li class="task-item">
-                <div class="card">
-                    <span>{{ consulta.concentra }}</span>
-                    <a href="delete/{{ consulta.id }}"><i class="bi bi-x-circle-fill"></i></a>
-                    <a href="edit/{{ consulta.id }}" data-bs-toggle="modal" data-bs-target="#editmodal"><i class="bi bi-pencil-fill"></i></a>               
-                </div>
-            </li>
-            <!--
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">{{ consulta.concentra }}</h5>
-                                <div class="card-text">Temperatura: {{ consulta.temperatura }}</div>
-                                <div class="card-text">Densidade: {{ consulta.densidade }}</div>
-                                <a href="delete/{{ consulta.id }}" class="btn btn-secondary"><i class="bi bi-x-circle-fill"></i></a>
-                                <a href="edit/{{ consulta.id }}">
-                                    <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-pencil-fill"></i></button>
-                                </a>
-                                <div class="card-text text-muted">
-                                    {{ consulta.created }} {{ consulta.id }}
+    <div class="teste">
+        <ul class="task-list">
+            {% for consulta in consultas %}
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ consulta.concentra }}</h5>
+                                    <a href="edit/{{ consulta.id }}" class="btn btn-secondary card-btn" data-bs-toggle="modal" data-bs-target="#editmodal"><i class="bi bi-pencil-fill"></i></a>
+                                    <a href="delete/{{ consulta.id }}" class="btn btn-secondary card-btn" ><i class="bi bi-x-circle-fill"></i></a>
+                                    <div class="card-text">Temperatura - {{ consulta.temperatura }}</div>
+                                    <div class="card-text">Densidade - {{ consulta.densidade }}</div>
+                                    <div class="card-text text-muted">
+                                        #{{ consulta.id }} - {{ consulta.created }} por 
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        -->
-        {% endfor %}
-    </ul>
+            {% endfor %}
+        </ul>   
+    </div>
     <ul>
         <div class="pagination">
             <span class="step-links">

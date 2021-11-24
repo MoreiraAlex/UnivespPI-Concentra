@@ -23,7 +23,7 @@ def consulta(request):
     else:
         consulta_list = Consulta.objects.all().order_by('-created')
 
-        paginator = Paginator(consulta_list, 4)
+        paginator = Paginator(consulta_list, 5)
         page = request.GET.get('page')
         consultas = paginator.get_page(page)
 
