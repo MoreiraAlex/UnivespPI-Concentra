@@ -30,6 +30,6 @@ class Consulta(models.Model):
     temperatura = models.CharField(max_length=5, choices=temp)
     densidade = models.FloatField()
     fator = models.FloatField()
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    author = models.ForeignKey(User, on_delete=models.CASCADE, default= 0)
     created = models.DateTimeField(auto_now_add=True)
 
