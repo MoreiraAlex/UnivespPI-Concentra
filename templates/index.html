@@ -11,7 +11,10 @@
     </li>
 {% else %}
     <li class="nav-item col-1 offset-4">
-        <a class="nav-link" aria-current="page" href="accounts/login">Entrar</a>
+        <a class="nav-link" aria-current="page" href="/accounts/login">Entrar</a>
+    </li>
+    <li class="nav-item col-1 offset-4">
+        <a class="nav-link" aria-current="page" href="/accounts/">Registrar</a>
     </li>
 {% endif %}
     <form method="POST">
@@ -58,7 +61,7 @@
                                     <div class="card-text">Temperatura - {{ consulta.temperatura }}</div>
                                     <div class="card-text">Densidade - {{ consulta.densidade }}</div>
                                     <div class="card-text text-muted">
-                                        #{{ consulta.id }} - {{ consulta.created }} por 
+                                        #{{ consulta.id }} - {{ consulta.created }} por {{ consulta.author }}
                                     </div>
                                 </div>
                             </div>

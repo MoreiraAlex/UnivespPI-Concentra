@@ -1,14 +1,14 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
 
-{% block title %} {{ block.super }} | Login {% endblock %}
+{% block title %} {{ block.super }} | Registrar {% endblock %}
 
 {% block nav %}
 <li class="nav-item col-1">
     <a href="/" class="nav-link">Consultas</a>
 </li>
 <li class="nav-item col-1 offset-4">
-    <a class="nav-link" aria-current="page" href="/accounts/">Registrar</a>
+    <a class="nav-link" aria-current="page" href="/accounts/login">Entrar</a>
 </li>
 {% endblock %}
 
@@ -17,12 +17,12 @@
     <div class="col-md-4 offset-md-4">
         <div class="card auth-card">
             <div class="card-body">
-                <h4 class="card-title text-center">Entrar</h4>
+                <h4 class="card-title text-center">Registrar</h4>
                 <form method="POST">
                     {% csrf_token %}
                     <input type="hidden" name="next" value="{{ next }}">
                     {{ form|crispy }}
-                    <button type="submit" class="btn btn-secondary btn-block">Entrar</button>
+                    <button type="submit" class="btn btn-secondary btn-block">Confirmar</button>
                 </form>
             </div>
         </div>

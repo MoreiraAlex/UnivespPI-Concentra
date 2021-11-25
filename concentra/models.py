@@ -1,4 +1,6 @@
 from django.db import models
+from django.contrib.auth.models import User
+from django.db.models.fields.related import ForeignKey
 
 class Concentra(models.Model):
     created = models.DateTimeField(auto_now_add=True)
@@ -27,6 +29,7 @@ class Consulta(models.Model):
     concentra = models.FloatField(default=0)
     temperatura = models.CharField(max_length=5, choices=temp)
     densidade = models.FloatField()
-    fator = models.FloatField(default=0)
+    fator = models.FloatField()
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
     created = models.DateTimeField(auto_now_add=True)
 

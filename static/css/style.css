@@ -85,8 +85,12 @@ ul.messages li{
 
 /* Login */
 
+.row-login {
+    margin: 0;
+}
+
 .auth-card{
-    margin: 150px 0 300px 0;
+    margin: 175px 0 325px 0;
     padding: 0;
 }
 

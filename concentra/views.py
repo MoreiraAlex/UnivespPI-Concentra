@@ -1,9 +1,20 @@
+from django.contrib.messages.api import success
 from django.shortcuts import get_object_or_404, redirect, render
 from .models import Consulta
 from .forms import ConsultaForm
 from django.contrib import messages
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import UserCreationForm
+from django.urls import reverse_lazy
+from django.views import generic
+
+from concentra import forms
+
+class SignUp(generic.CreateView):
+    form_class = UserCreationForm
+    success_url = reverse_lazy('login')
+    template_name = 'registration/register.html'
 
 def consulta(request):    
     if request.method == 'POST':
@@ -11,6 +22,7 @@ def consulta(request):
 
         if form.is_valid():
             consulta = form.save(commit=False)
+            consulta.author = request.user
             consulta.densidade = consulta.densidade + consulta.fator
             consulta.concentra = 1
             consulta.save()
