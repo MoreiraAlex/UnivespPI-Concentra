@@ -4,12 +4,14 @@
 {% block title %} {{ block.super }} | Login {% endblock %}
 
 {% block nav %}
-<li class="nav-item col-1">
-    <a href="/" class="nav-link">Consultas</a>
+<li class="nav-item col-2">
+    <a class="nav-link" aria-current="page" href="/">Consultas</a>
 </li>
-<li class="nav-item col-1 offset-4">
+<li class="nav-item col-1 offset-2">
     <a class="nav-link" aria-current="page" href="/accounts/">Registrar</a>
 </li>
+<li class="nav-item col-1 offset-3">
+    <a class="nav-link" aria-current="page" href="#">Sobre</a>
 {% endblock %}
 
 {% block content %}

@@ -3,18 +3,24 @@
 
 {% block nav %}
 {% if user.is_authenticated %}
-    <div class="col-8">
+    <div class="col-6">
         <button type="button" class="btn btn-secondary btn-block" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-plus"></i> Consulta</button>
     </div>
-    <li class="nav-item col">
+    <li class="nav-item col-2">
         <a class="nav-link" aria-current="page" href="accounts/logout">Sair</a>
     </li>
+    <li class="nav-item col-2">
+        <a class="nav-link" aria-current="page" href="/accounts/">Sobre</a>
+    </li>
 {% else %}
-    <li class="nav-item col-1 offset-4">
+    <li class="nav-item col-1">
         <a class="nav-link" aria-current="page" href="/accounts/login">Entrar</a>
     </li>
-    <li class="nav-item col-1 offset-4">
+    <li class="nav-item col-1 offset-2">
         <a class="nav-link" aria-current="page" href="/accounts/">Registrar</a>
+    </li>
+    <li class="nav-item col-1 offset-3">
+        <a class="nav-link" aria-current="page" href="#">Sobre</a>
     </li>
 {% endif %}
     <form method="POST">
