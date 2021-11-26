@@ -33,6 +33,20 @@ ul.messages li{
     padding: 0;
 }
 
+.task-item {
+    list-style: none;
+}
+
+.empty {
+    list-style: none;
+    margin-top: 150px;
+}
+
+.empty p {
+    text-align: center;
+    font-style: italic;
+}
+
 .card {
     box-shadow: 0.6px 0.6px 2px 0.3px rgb(54, 54, 54);
     margin: 4px 0;
@@ -41,15 +55,18 @@ ul.messages li{
 .card-body h5 {
     display: inline;
     width: 75px;
-    margin-right: 85%;
+    margin-right: 95%;
 }
 
-.card-body .card-btn {
-    margin: 0 2px 0 1px;
-    box-shadow: 0.4px 0.4px 1px 0.3px rgb(54, 54, 54);
+.card-body a{
+    color: #6c757d;
 }
 
-.teste {
+.card-body a:hover{
+    color: black;
+}
+
+.area {
     background-color: rgb(248,249,250);
     box-shadow: 0.8px 0.8px 4px 0.5px rgb(54, 54, 54);
     width: 95%;
@@ -90,7 +107,7 @@ ul.messages li{
 }
 
 .auth-card{
-    margin: 175px 0 325px 0;
+    margin: 150px 0 300px 0;
     padding: 0;
 }
 
@@ -101,6 +118,14 @@ ul.messages li{
 .auth-card .btn {
     margin-top: 20px;
 }
+
+/* Register */
+
+.auth-card-register{
+    padding: 0;
+    margin: 75px 0 115px 0;
+}
+
 
 /* Rodapé */
 

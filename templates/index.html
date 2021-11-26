@@ -39,6 +39,7 @@
     </form>
 {% endblock %}
 
+
 {% block content %}
     {% if messages %}
         <ul class="messages">
@@ -47,29 +48,38 @@
             {% endfor %}
         </ul>
     {% endif %}
-    <div class="teste">
-        <ul class="task-list">
-            {% for consulta in consultas %}
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h5 class="card-title">{{ consulta.concentra }}</h5>
-                                    <a href="edit/{{ consulta.id }}" class="btn btn-secondary card-btn" data-bs-toggle="modal" data-bs-target="#editmodal"><i class="bi bi-pencil-fill"></i></a>
-                                    <a href="delete/{{ consulta.id }}" class="btn btn-secondary card-btn" ><i class="bi bi-x-circle-fill"></i></a>
-                                    <div class="card-text">Temperatura - {{ consulta.temperatura }}</div>
-                                    <div class="card-text">Densidade - {{ consulta.densidade }}</div>
-                                    <div class="card-text text-muted">
-                                        #{{ consulta.id }} - {{ consulta.created }} por {{ consulta.author }}
+    <div class="area">
+        {% if consultas %}
+            <ul class="task-list">
+                {% for consulta in consultas %}
+                    <li class="task-item">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{ consulta.concentra }}</h5>
+                                            <a href="delete/{{ consulta.id }}"><i class="bi bi-trash-fill"></i></a>
+                                            <div class="card-text">Temperatura: {{ consulta.temperatura }}</div>
+                                            <div class="card-text">Densidade: {{ consulta.densidade }}</div>
+                                            <div class="card-text text-muted">
+                                                #{{ consulta.id }} - {{ consulta.created }} por {{ consulta.author }}
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            {% endfor %}
-        </ul>   
+                    </li>
+                {% endfor %}
+            </ul>   
+        {% else %}
+            <ul class="empty">
+                <li>
+                    <p>Insira uma nova aferição!</p>
+                </li>
+            </ul>
+        {% endif %}
     </div>
     <ul>
         <div class="pagination">
@@ -86,24 +96,4 @@
             </span>
         </div>
     </ul>
-    <form method="POST">
-        <div class="modal fade" id="editmodal" tabindex="-1" aria-labelledby="editmodal" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Editando consulta numero {{ consultaEdit.id }}</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        {% csrf_token %}
-                        {{ form|crispy }}
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                        <button type="submit" class="btn btn-primary" value="Editando Consulta">Confirmar</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </form>
 {% endblock %}
