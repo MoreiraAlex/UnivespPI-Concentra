@@ -1,4 +1,3 @@
-from django.contrib.messages.api import success
 from django.shortcuts import get_object_or_404, redirect, render
 from .models import Consulta
 from .forms import ConsultaForm
@@ -8,15 +7,17 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
 from django.views import generic
-
-from concentra import forms
+import pandas as pd
+import numpy as np
 
 class SignUp(generic.CreateView):
     form_class = UserCreationForm
     success_url = reverse_lazy('login')
     template_name = 'registration/register.html'
 
-def consulta(request):    
+
+def consulta(request): 
+    dados = pd.read_csv('tb.xlsx')   
     if request.method == 'POST':
         form = ConsultaForm(request.POST)
 
@@ -24,8 +25,11 @@ def consulta(request):
             consulta = form.save(commit=False)
             consulta.author = request.user
             consulta.densidade = consulta.densidade + consulta.fator
+            #teste = concent(consulta.temperatura, consulta.densidade)
+            teste = dados.loc[dados[0] == '40,0', ['NaOH']]
             consulta.concentra = 1
             consulta.save()
+            #print(teste)
             messages.info(request, 'Aferição de numero ' + str(consulta.id) + ' registrada.')
             return redirect('/')
         else:
@@ -33,6 +37,7 @@ def consulta(request):
             return redirect('/')
             
     else:
+        #print(dados)
         consulta_list = Consulta.objects.all().order_by('-created')
 
         paginator = Paginator(consulta_list, 5)
@@ -40,31 +45,9 @@ def consulta(request):
         consultas = paginator.get_page(page)
 
         form = ConsultaForm()
-        return render(request, 'index.html', {'consultas': consultas, 'form': form})
+        return render(request, 'index.html', {'consultas': consultas, 'form': form}) 
 
-@login_required
-def editConsulta(request, id):
-    consultaEdit = get_object_or_404(Consulta, pk=id)
-    form = ConsultaForm(instance=consultaEdit)
 
-    if request.method == 'POST':
-        form = ConsultaForm(request.POST, instance=consultaEdit)
-
-        if form.is_valid():
-            consultaEdit = form.save(commit=False)
-            consultaEdit.densidade = consultaEdit.densidade + consultaEdit.fator
-            consultaEdit.concentra = 1
-            consultaEdit.save()
-            messages.info(request, 'Aferição de numero ' + str(consulta.id) + ' editada com sucesso.')
-            return redirect('/')
-        else:
-            messages.info(request, 'Aferição nao foi editada!')
-            return redirect('/')
-
-    else:
-        return redirect('/', {'form': form, 'consultaEdit':consultaEdit})
-    
-    
 @login_required
 def deleteConsulta(request, id):
     consulta = get_object_or_404(Consulta, pk=id)
@@ -73,3 +56,17 @@ def deleteConsulta(request, id):
     messages.info(request, 'Aferição deletada com sucesso.')
 
     return redirect('/')
+
+
+def concent(temperatura, densidade):
+    dados = pd.read_csv('tb.xlsx')  
+
+    concentra = dados[temperatura]
+    print(concentra)
+    resultado = getnearpos(concentra, densidade)
+    return resultado
+
+
+def getnearpos(array, value):
+    idx = (np.abs(array-value)).idxmin()
+    return idx
