@@ -7,8 +7,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
 from django.views import generic
-import pandas as pd
-import numpy as np
+#import pandas as pd
+#import numpy as np
 
 class SignUp(generic.CreateView):
     form_class = UserCreationForm
@@ -17,7 +17,7 @@ class SignUp(generic.CreateView):
 
 
 def consulta(request): 
-    dados = pd.read_csv('tb.xlsx')   
+    #dados = pd.read_csv('tb.xlsx')   
     if request.method == 'POST':
         form = ConsultaForm(request.POST)
 
@@ -26,7 +26,7 @@ def consulta(request):
             consulta.author = request.user
             consulta.densidade = consulta.densidade + consulta.fator
             #teste = concent(consulta.temperatura, consulta.densidade)
-            teste = dados.loc[dados[0] == '40,0', ['NaOH']]
+            #teste = dados.loc[dados[0] == '40,0', ['NaOH']]
             consulta.concentra = 1
             consulta.save()
             #print(teste)
@@ -58,6 +58,10 @@ def deleteConsulta(request, id):
     return redirect('/')
 
 
+def about(request):
+    return render(request,'about.html')
+
+'''
 def concent(temperatura, densidade):
     dados = pd.read_csv('tb.xlsx')  
 
@@ -70,3 +74,4 @@ def concent(temperatura, densidade):
 def getnearpos(array, value):
     idx = (np.abs(array-value)).idxmin()
     return idx
+'''
