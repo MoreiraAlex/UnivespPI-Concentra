@@ -134,6 +134,50 @@ ul.messages li{
     margin: 0!important;
 }
 
+/* Sobre */
+
+.area-about {
+    background-color: rgb(248,249,250);
+    box-shadow: 0.8px 0.8px 4px 0.5px rgb(54, 54, 54);
+    width: 95%;
+    height: 1500px;
+    margin: 20px 38px 60px 32px;
+    padding: 25px 20px;
+}
+
+.area-about img {
+    height: 400px;
+    margin-left: 100px;
+    margin-bottom: 30px;
+}
+
+.area-about h2 {
+    font-size: larger;
+}
+
+.area-about h3 {
+    font-size: large;
+    margin-left: 10px;
+}
+
+.area-about .formula-area{
+    margin-left: 25px;
+}
+
+.area-about .formula-area p{
+    margin: 5px 0;
+}
+
+.area-about .formula-area .formula{
+    margin: 20px 0 20px 100px;
+    font-style: italic;
+    font-size: larger;
+}
+
+.text {
+    margin-left: 25px;
+}
+
 
 /* Rodapé */
 

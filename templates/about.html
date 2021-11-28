@@ -1,36 +1,97 @@
 {% extends 'base.html' %}
-{% load crispy_forms_tags %}
 
 {% block nav %}
-{% if user.is_authenticated %}
-    <li class="nav-item col-4">
-        <a class="nav-link" aria-current="page" href="/">Consultas</a>
-    </li>
-    <li class="nav-item col-3">
-        <a class="nav-link" aria-current="page" href="/accounts/">Sobre</a>
-    </li>
-    <li class="nav-item col-2">
-        <a class="nav-link" aria-current="page" href="accounts/logout">Sair</a>
-    </li>
-{% else %}
-    <li class="nav-item col-3">
-        <a class="nav-link" aria-current="page" href="/">Consultas</a>
-    </li>
-    <li class="nav-item col-2">
-        <a class="nav-link" aria-current="page" href="/accounts/login">Entrar</a>
-    </li>
-    <li class="nav-item col-3">
-        <a class="nav-link" aria-current="page" href="/accounts/">Registrar</a>
-    </li>
-    <li class="nav-item col-1">
-        <a class="nav-link" aria-current="page" href="/about">Sobre</a>
-    </li>
-{% endif %}
+    {% if user.is_authenticated %}
+        <li class="nav-item col-4">
+            <a class="nav-link" aria-current="page" href="/">Consultas</a>
+        </li>
+        <li class="nav-item col-3">
+            <a class="nav-link" aria-current="page" href="/accounts/">Sobre</a>
+        </li>
+        <li class="nav-item col-2">
+            <a class="nav-link" aria-current="page" href="accounts/logout">Sair</a>
+        </li>
+    {% else %}
+        <li class="nav-item col-3">
+            <a class="nav-link" aria-current="page" href="/">Consultas</a>
+        </li>
+        <li class="nav-item col-2">
+            <a class="nav-link" aria-current="page" href="/accounts/login">Entrar</a>
+        </li>
+        <li class="nav-item col-3">
+            <a class="nav-link" aria-current="page" href="/accounts/">Registrar</a>
+        </li>
+        <li class="nav-item col-1">
+            <a class="nav-link" aria-current="page" href="/about">Sobre</a>
+        </li>
+    {% endif %}
 {% endblock %}
 
 
 {% block content %}
-    <div class="area">
-        <h1>Conteudo</h1>
+    <div class="area-about">
+        <h1>Titulo</h1>
+        <h2>Introdução</h2>
+        <p>
+            O método se baseia na medição da densidade da soda cáustica e posteriormente comparação com uma tabela que
+            relaciona a densidade, a temperatura e a Alcalinidade Total (% de NaOH).
+        </p>
+        <h2>Aparelhagem</h2>
+        <ul>
+            <li>Proveta com capacidade de 250 mL.</li>
+            <li>Densímetro com escala de 1,400 a 1,600 g/mL, com menor divisão de 0,002 g/mL, calibrado.</li>
+            <li>Termômetro com escala de -10 a 150 o C e subdivisão de 1 o C, calibrado.</li>
+        </ul>
+        <h2>Procedimento</h2>
+        <ol>
+            <strong>Nota</strong>: Quando a determinação for efetuada em potes de amostragem colocados em linha, o ítem 1. não deve
+            ser executado. Proceder à análise a partir do item 3. após encher o pote com a amostra a ser analisada.
+            <li>
+                Lavar e secar a parte interna da proveta.
+            </li>
+            <li>
+                Transferir cerca de 200 mL da amostra ainda quente para a proveta. Manter o termômetro dentro do frasco de
+                amostra para que ele entre em equilíbrio rapidamente quando for colocado na proveta (item 5.).
+            </li>
+            <li>
+                Secar o densímetro e colocá-lo dentro da proveta cuidadosamente. Aguardar cerca de 2 minutos para que o
+                densímetro entre em equilíbrio com a temperatura da amostra.
+            </li>
+            <li>
+                Girar o densímetro em torno de seu eixo e efetuar a leitura (ver condições corretas de leitura na imagem, ao final do Procedimento) de
+                densidade. Anotar o valor lido.
+            </li>
+            <strong>Nota</strong>: O densímetro não deve tocar as paredes da proveta no momento da leitura.
+            <li>
+                Medir a temperatura da amostra no interior da proveta, logo em seguida. Anotar o valor lido e depois retirar o
+                densímetro da proveta.
+            </li>
+            <strong>Nota</strong>: O intervalo de tempo entre a leitura da densidade e temperatura deverá ser o menor possível, caso
+            contrário, poderá apresentar diferença significativa no resultado, principalmente se a temperatura da
+            amostra estiver alta.
+            <li>
+                Lavar o densímetro com água logo após efetuar a análise. Não deixar o densímetro impregnado com soda
+                cáustica por muito tempo para evitar que o vidro seja atacado pela soda cáustica, alterando o peso do
+                densímetro.
+            </li>
+        </ol>
+        <img src="/static/img/img.png" alt="Condição correta de leitura da Densidade">
+        <h2>Cálculos</h2>
+        <h3>Corrigir a leitura de densidade efetuada pela fórmula:</h3>
+        <div class="formula-area">
+            <p class="formula">dc = d + f</p>
+            <p>Onde:</p>
+            <p>dc = Densidade corrigida, em g/mL</p>
+            <p>d = Densidade lida no ítem 5.4., em g/mL</p>
+            <p>f = Fator de correção do densimetro</p>
+            <p>
+        </div>        
+            <strong>Nota</strong>: Se o fator do densímetro for um número negativo, subtrair da Densidade lida.
+        </p>
+        <h3>Cálculo da Alcalinidade Total da Soda Cáustica:</h3>
+        <p class="text">
+            Relacionar a Densidade corrigida (dc) e a temperatura medida no item 5. na base de dados, para obter a 
+            Alcalinidade Total da amostra em % de NaOH.
+        </p>
     </div>
 {% endblock %}
