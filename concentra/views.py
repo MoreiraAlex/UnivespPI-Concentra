@@ -7,8 +7,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
 from django.views import generic
-#import pandas as pd
-#import numpy as np
+import pandas as pd
+import numpy as np
 
 class SignUp(generic.CreateView):
     form_class = UserCreationForm
@@ -17,7 +17,7 @@ class SignUp(generic.CreateView):
 
 
 def consulta(request): 
-    #dados = pd.read_csv('tb.xlsx')   
+    dados = pd.read_csv('tb.xlsx') 
     if request.method == 'POST':
         form = ConsultaForm(request.POST)
 
@@ -25,11 +25,10 @@ def consulta(request):
             consulta = form.save(commit=False)
             consulta.author = request.user
             consulta.densidade = consulta.densidade + consulta.fator
-            #teste = concent(consulta.temperatura, consulta.densidade)
-            #teste = dados.loc[dados[0] == '40,0', ['NaOH']]
-            consulta.concentra = 1
+            linha = concent(consulta.temperatura, consulta.densidade)
+            consulta.concentra = dados.loc[linha, 'NaOH']
+            print(consulta.concentra)
             consulta.save()
-            #print(teste)
             messages.info(request, 'Aferição de numero ' + str(consulta.id) + ' registrada.')
             return redirect('/')
         else:
@@ -37,7 +36,6 @@ def consulta(request):
             return redirect('/')
             
     else:
-        #print(dados)
         consulta_list = Consulta.objects.all().order_by('-created')
 
         paginator = Paginator(consulta_list, 5)
@@ -61,12 +59,11 @@ def deleteConsulta(request, id):
 def about(request):
     return render(request,'about.html')
 
-'''
-def concent(temperatura, densidade):
-    dados = pd.read_csv('tb.xlsx')  
 
-    concentra = dados[temperatura]
-    print(concentra)
+def concent(temperatura, densidade):
+    tb = pd.read_csv('tb.xlsx')  
+
+    concentra = tb[temperatura]
     resultado = getnearpos(concentra, densidade)
     return resultado
 
@@ -74,4 +71,3 @@ def concent(temperatura, densidade):
 def getnearpos(array, value):
     idx = (np.abs(array-value)).idxmin()
     return idx
-'''
