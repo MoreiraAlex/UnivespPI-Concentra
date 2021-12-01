@@ -38,12 +38,12 @@ def consulta(request):
     else:
         consulta_list = Consulta.objects.all().order_by('-created')
 
-        '''paginator = Paginator(consulta_list, 5)
+        paginator = Paginator(consulta_list, 5)
         page = request.GET.get('page')
-        consultas = paginator.get_page(page)'''
+        consultas = paginator.get_page(page)
 
         form = ConsultaForm()
-        return render(request, 'index.html', {'consultas': consulta_list, 'form': form}) 
+        return render(request, 'index.html', {'consultas': consultas, 'form': form}) 
 
 
 @login_required
