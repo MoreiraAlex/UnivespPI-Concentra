@@ -6,8 +6,13 @@
     margin-bottom: 20px;
 }
 
+.navbar .container-fluid .btn-responsive{
+    display: none;    
+}
+
 .navbar-brand {
     font-weight: bold;
+    margin-top: 10px;
 }
 
 .navbar-light .navbar-nav a.nav-link{
@@ -15,9 +20,6 @@
     letter-spacing: 1px;
 }
 
-.navbar-brand{
-    margin-top: 10px;
-}
 
 /* Messages */
 
@@ -204,5 +206,35 @@ footer a {
 footer a:hover {
     color: white;
     
+}
+
+/*--------------Responsive---------------*/
+
+/*IPAD*/
+@media(max-width: 768px){
+
+/* Navbar */
+
+.navbar .container-fluid .collapse ul div .nav-item{
+   width: 100%;
+}
+
+.navbar .container-fluid .collapse ul div .nav-item a{
+    text-align: center;
+ }
+
+.navbar .container-fluid .collapse ul div .nav-item .btn{
+    display: none;
+}
+
+.navbar .container-fluid .btn-responsive{
+    display: inline;
+    margin-left: 40%;
+}
+
+
+
+
+
 }
 
