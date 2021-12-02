@@ -81,6 +81,10 @@ ul.messages li{
     padding: 8px 0;
 }
 
+.card-body .text-responsive{
+    display: none;           
+} 
+
 /* Paginação */
 
 .pagination {
@@ -187,7 +191,6 @@ footer {
     background-color: #333;
     height: 100px;
     border-top: 2px solid #202020;
-
 }
 
 footer p {
@@ -236,6 +239,10 @@ footer a:hover {
         margin-right: 90%;
     }
 
+    .card-body .text-responsive{
+        display: none;           
+    } 
+
 /* Login */ 
     .row-login .col-responsive {
         width: 450px;
@@ -281,4 +288,107 @@ footer a:hover {
         margin: 30px 38px 60px 33px;
     }
 }
+
+/*Smartphone*/
+@media(max-width: 375px){
+
+    /* Navbar */
+        .navbar .container-fluid .navbar-brand{
+            font-size: medium;
+        }
+    
+        .navbar .container-fluid .btn-responsive{
+            margin-left: 0;
+        }
+    
+    /* Consultas */
+        .card-body h5 {
+            margin-right: 75%;
+        }
+        
+        .card-body .text-pc{
+            display: none;
+        } 
+
+        .card-body .text-responsive{
+            display: block;
+            font-size: 90%;           
+        } 
+
+        .card-body .text-1{ 
+            margin-top: 20px;           
+        } 
+
+        .area {
+            width: 90%;
+            padding-top: 28px;
+        }
+    
+    
+    /* Login */ 
+        .row-login .col-responsive {
+            width: 350px;
+            margin: auto;
+        }
+    
+        .auth-card-login {
+            height: 350px;
+            margin: 115px 0 165px 0;
+        }
+        
+    /* Resgister */
+        .row-register .col-responsive {
+            width: 350px;
+            margin: auto;
+        }
+    
+        .auth-card-register {
+            height: 700px;
+            margin: 15px 0 30px 0;
+        }
+    
+    /* Sobre */  
+        .area-about {
+            width: 85%;
+            height: 2650px;
+            margin: auto;
+        }
+
+        footer {
+            margin-top: 30px;
+        }
+
+        .area-about img {
+            height: 250px;
+            margin-left: 30px;
+            margin-bottom: 30px;
+        }
+
+        .area-about h1 {
+            font-size: x-large;
+            margin-bottom: 25px;
+        }
+        
+        .area-about h2 {
+            font-size: medium;
+        }
+        
+        .area-about h3 {
+            font-size: medium;
+        }
+
+        .area-about ol {
+            padding: 0;
+            margin-left: 10px;
+        }
+
+        .area-about ol li{
+            margin-top: 15px;
+        }
+        
+        .area-about .formula-area .formula{
+            margin: 20px 0 20px 70px;
+        }  
+    }
+    
 

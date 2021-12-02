@@ -3,35 +3,35 @@
 
 {% block button %}
     {% if user.is_authenticated %}
-        <button type="button" class="btn btn-secondary btn-block" data-bs-toggle="modal" data-bs-target="#exampleModal">Consultar</button>
-    {% endif %}
-    <form method="POST">
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Nova aferição</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        {% csrf_token %}
-                        {{ form|crispy }}
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                        <button type="submit" class="btn btn-primary" value="Nova Consulta">Consultar</button>
+        <button type="button" class="btn btn-secondary btn-block" data-bs-toggle="modal" data-bs-target="#ModalResponsive">Consultar</button>
+        <form method="POST">
+            <div class="modal fade" id="ModalResponsive" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Nova aferição</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            {% csrf_token %}
+                            {{ form|crispy }}
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-primary" value="Nova Consulta">Consultar</button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </form>
+        </form>
+    {% endif %}
 {% endblock %}
 
 
 {% block nav %}
 {% if user.is_authenticated %}
     <div class="nav-item col-3">
-        <button type="button" class="btn btn-secondary btn-block" data-bs-toggle="modal" data-bs-target="#exampleModal">Consultar</button>
+        <button type="button" class="btn btn-secondary btn-block" data-bs-toggle="modal" data-bs-target="#ModalPC">Consultar</button>
     </div>
     <li class="nav-item col-3">
         <a class="nav-link" aria-current="page" href="/">Consultas</a>
@@ -57,7 +57,7 @@
     </li>
 {% endif %}
     <form method="POST">
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="ModalPC" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -99,10 +99,16 @@
                                         <div class="card-body">
                                             <h5 class="card-title">{{ consulta.concentra }}</h5>
                                             <a href="delete/{{ consulta.id }}"><i class="bi bi-trash-fill"></i></a>
-                                            <div class="card-text">Temperatura: {{ consulta.temperatura }}</div>
-                                            <div class="card-text">Densidade: {{ consulta.densidade }}</div>
-                                            <div class="card-text text-muted">
+                                            <div class="card-text text-pc">Temperatura: {{ consulta.temperatura }}</div>
+                                            <div class="card-text text-pc">Densidade: {{ consulta.densidade }}</div>
+                                            <div class="card-text text-muted text-pc">
                                                 #{{ consulta.id }} - {{ consulta.created }} por {{ consulta.author }}
+                                            </div>
+                                            <div class="card-text text-muted text-responsive text-1">
+                                                {{ consulta.author }}
+                                            </div>
+                                            <div class="card-text text-muted text-responsive">
+                                                #{{ consulta.id }} - {{ consulta.created }}
                                             </div>
                                         </div>
                                     </div>
