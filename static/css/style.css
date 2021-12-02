@@ -112,16 +112,16 @@ ul.messages li{
     margin: 0;
 }
 
-.auth-card{
+.auth-card-login{
     margin: 160px 0 300px 0;
     padding: 0;
 }
 
-.auth-card .form-group {
+.auth-card-login .form-group {
     margin-bottom: 10px;
 }
 
-.auth-card .btn {
+.auth-card-login .btn {
     margin-top: 20px;
 }
 
@@ -214,27 +214,64 @@ footer a:hover {
 @media(max-width: 768px){
 
 /* Navbar */
+    .navbar .container-fluid .collapse ul div .nav-item{
+        width: 100%;
+    }
 
-.navbar .container-fluid .collapse ul div .nav-item{
-   width: 100%;
-}
+    .navbar .container-fluid .collapse ul div .nav-item a{
+        text-align: center;
+    }
 
-.navbar .container-fluid .collapse ul div .nav-item a{
-    text-align: center;
- }
+    .navbar .container-fluid .collapse ul div .nav-item .btn{
+        display: none;
+    }
 
-.navbar .container-fluid .collapse ul div .nav-item .btn{
-    display: none;
-}
+    .navbar .container-fluid .btn-responsive{
+        display: inline;
+        margin-left: 40%;
+    }
 
-.navbar .container-fluid .btn-responsive{
-    display: inline;
-    margin-left: 40%;
-}
+/* Consultas */
+    .card-body h5 {
+        margin-right: 90%;
+    }
 
+/* Login */ 
+    .row-login .col-responsive {
+        width: 450px;
+        margin-left: 159px;
+    }
 
+    .auth-card-login {
+        height: 350px;
+        margin: 185px 0 300px 0;
+    }
 
+    .auth-card-login .form-group {
+        margin-bottom: 30px;
+    }
+    
+    .auth-card-login .btn {
+        margin-top: 25px;
+    }
+    
+/* Resgister */
+    .row-register .col-responsive {
+        width: 450px;
+        margin-left: 159px;
+    }
 
+    .auth-card-register {
+        height: 600px;
+        margin: 100px 0 135px 0;
+    }
 
+    .auth-card-register .form-group {
+        margin-bottom: 30px;
+    }
+    
+    .auth-card-register .btn {
+        margin-top: 15px;
+    }
 }
 
