@@ -273,5 +273,12 @@ footer a:hover {
     .auth-card-register .btn {
         margin-top: 15px;
     }
+
+/* Sobre */  
+    .area-about {
+        width: 91%;
+        height: 1680px;
+        margin: 30px 38px 60px 33px;
+    }
 }
 
